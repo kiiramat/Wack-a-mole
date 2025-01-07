@@ -13,7 +13,22 @@ function scoreDisplay(board) {
     scoreDiv.append(scoreValue);
 }
 
-scoreDisplay(board)
+scoreDisplay(board);
+
+function timerDisplay(board) {
+    const timerDiv = document.createElement("div");
+    timerDiv.setAttribute("class", "timer");
+    const timerText = document.createElement("h2");
+    timerText.innerHTML = "Time left:";
+    const timerValue = document.createElement("h2");
+    timerValue.innerHTML = 60;
+
+    board.append(timerDiv);
+    timerDiv.append(timerText);
+    timerDiv.append(timerValue);
+}
+
+timerDisplay(board);
 
 function drawBoard(board, numDivs) {
     const grid = document.createElement("div");
