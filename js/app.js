@@ -1,4 +1,5 @@
 const board = document.querySelector(".container");
+const numDivs = 9;
 
 function scoreDisplay(board) {
     const scoreDiv = document.createElement("div");
@@ -32,14 +33,14 @@ function timerDisplay(board) {
 
 timerDisplay(board);
 
-function drawBoard(board, numDivs) {
+function drawBoard(board) {
     const grid = document.createElement("div");
     grid.setAttribute("class", "grid");
 
     for (let i = 0; i < numDivs; i ++) {
         const square = document.createElement("div");
         square.setAttribute("class", "square");
-        square.setAttribute("id", i+1);
+        square.setAttribute("id", i);
         grid.append(square);
     }
 
@@ -47,3 +48,23 @@ function drawBoard(board, numDivs) {
 }
 
 drawBoard(board, 9);
+
+const squares = document.querySelectorAll(".square");
+const mole = document.querySelector(".mole");
+const timeLeft = document.querySelector("#time-left");
+const score = document.querySelector("#score");
+
+let result = 0;
+
+function randomSquare() {
+    squares.forEach(square => {
+        square.classList.remove("mole");
+    });
+
+    let randomSquare = squares[Math.floor(Math.random() * 9)];
+    randomSquare.classList.add("mole");
+}
+
+randomSquare()
+
+
