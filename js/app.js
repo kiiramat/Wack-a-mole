@@ -33,6 +33,19 @@ function timerDisplay(board) {
 
 timerDisplay(board);
 
+function startButton() {
+    const buttonDiv = document.createElement("div");
+    buttonDiv.setAttribute("class", "buttonDiv");
+    const button = document.createElement("button");
+    button.innerHTML = "Start";
+    button.addEventListener("click", moveMole)
+
+    board.append(buttonDiv);
+    buttonDiv.append(button);
+}
+
+startButton();
+
 function drawBoard(board) {
     const grid = document.createElement("div");
     grid.setAttribute("class", "grid");
@@ -69,6 +82,4 @@ function moveMole() {
     let timerId = null;
     timerId = setInterval(randomSquare, 500);
 }
-
-moveMole()
 
