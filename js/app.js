@@ -38,7 +38,10 @@ function startButton() {
     buttonDiv.setAttribute("class", "buttonDiv");
     const button = document.createElement("button");
     button.innerHTML = "Start";
-    button.addEventListener("click", moveMole)
+    button.addEventListener("click", () => {
+        buttonDiv.classList.add("hidden");
+        moveMole();
+    });
 
     board.append(buttonDiv);
     buttonDiv.append(button);

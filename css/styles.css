@@ -14,3 +14,7 @@
 .mole {
     background-color: blue;
 }
+
+.hidden {
+    visibility: hidden;
+}
