@@ -1,5 +1,4 @@
 const board = document.querySelector(".container");
-const numDivs = 9;
 
 function scoreDisplay(board) {
     const scoreDiv = document.createElement("div");
@@ -15,8 +14,6 @@ function scoreDisplay(board) {
     scoreDiv.append(scoreValue);
 }
 
-scoreDisplay(board);
-
 function timerDisplay(board) {
     const timerDiv = document.createElement("div");
     timerDiv.setAttribute("class", "timerDiv");
@@ -31,7 +28,6 @@ function timerDisplay(board) {
     timerDiv.append(timerValue);
 }
 
-timerDisplay(board);
 
 function startButton() {
     const buttonDiv = document.createElement("div");
@@ -47,9 +43,7 @@ function startButton() {
     buttonDiv.append(button);
 }
 
-startButton();
-
-function drawBoard(board) {
+function drawBoard(board, numDivs) {
     const grid = document.createElement("div");
     grid.setAttribute("class", "grid");
 
@@ -62,15 +56,6 @@ function drawBoard(board) {
 
     board.append(grid);
 }
-
-drawBoard(board, 9);
-
-const squares = document.querySelectorAll(".square");
-const mole = document.querySelector(".mole");
-const timeLeft = document.querySelector("#time-left");
-const score = document.querySelector("#score");
-
-let result = 0;
 
 function randomSquare() {
     squares.forEach(square => {
@@ -86,3 +71,15 @@ function moveMole() {
     timerId = setInterval(randomSquare, 500);
 }
 
+
+scoreDisplay(board);
+timerDisplay(board);
+startButton();
+drawBoard(board, 9);
+
+const squares = document.querySelectorAll(".square");
+const mole = document.querySelector(".mole");
+const timeLeft = document.querySelector("#time-left");
+const score = document.querySelector("#score");
+
+let result = 0;
