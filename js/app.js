@@ -28,7 +28,6 @@ function timerDisplay(mainContainer) {
     timerDiv.append(timerValue);
 }
 
-
 function startButton() {
     const buttonDiv = document.createElement("div");
     buttonDiv.setAttribute("class", "buttonDiv");
@@ -64,7 +63,10 @@ function randomSquare() {
 
     let randomSquare = squares[Math.floor(Math.random() * 9)];
     randomSquare.classList.add("mole");
+
+    hitPosition = randomSquare.id;
 }
+
 
 function moveMole() {
     let timerId = null;
@@ -80,6 +82,17 @@ drawBoard(mainContainer, 9);
 const squares = document.querySelectorAll(".square");
 const mole = document.querySelector(".mole");
 const timeLeft = document.querySelector("#time-left");
-const score = document.querySelector("#score");
+const score = document.querySelector(".score");
 
 let result = 0;
+let hitPosition
+
+squares.forEach(square => {
+    square.addEventListener("mousedown", () => {
+        if (square.id == hitPosition) {
+            result ++;
+            score.innerHTML = result;
+            hitPosition = null;
+        }
+    })
+})
