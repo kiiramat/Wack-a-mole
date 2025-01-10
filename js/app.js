@@ -1,6 +1,6 @@
-const board = document.querySelector(".container");
+const mainContainer = document.querySelector(".container");
 
-function scoreDisplay(board) {
+function scoreDisplay(mainContainer) {
     const scoreDiv = document.createElement("div");
     scoreDiv.setAttribute("class", "scoreDiv");
     const scoreLabel = document.createElement("h2");
@@ -9,12 +9,12 @@ function scoreDisplay(board) {
     scoreValue.setAttribute("class", "score");
     scoreValue.innerHTML = 0;
 
-    board.append(scoreDiv);
+    mainContainer.append(scoreDiv);
     scoreDiv.append(scoreLabel);
     scoreDiv.append(scoreValue);
 }
 
-function timerDisplay(board) {
+function timerDisplay(mainContainer) {
     const timerDiv = document.createElement("div");
     timerDiv.setAttribute("class", "timerDiv");
     const timerLabel = document.createElement("h2");
@@ -23,7 +23,7 @@ function timerDisplay(board) {
     timerValue.setAttribute("class", "time-left");
     timerValue.innerHTML = 60;
 
-    board.append(timerDiv);
+    mainContainer.append(timerDiv);
     timerDiv.append(timerLabel);
     timerDiv.append(timerValue);
 }
@@ -39,22 +39,22 @@ function startButton() {
         moveMole();
     });
 
-    board.append(buttonDiv);
+    mainContainer.append(buttonDiv);
     buttonDiv.append(button);
 }
 
-function drawBoard(board, numDivs) {
-    const grid = document.createElement("div");
-    grid.setAttribute("class", "grid");
+function drawBoard(mainContainer, numDivs) {
+    const gridDiv = document.createElement("div");
+    gridDiv.setAttribute("class", "gridDiv");
 
     for (let i = 0; i < numDivs; i ++) {
         const square = document.createElement("div");
         square.setAttribute("class", "square");
         square.setAttribute("id", i);
-        grid.append(square);
+        gridDiv.append(square);
     }
 
-    board.append(grid);
+    mainContainer.append(gridDiv);
 }
 
 function randomSquare() {
@@ -72,10 +72,10 @@ function moveMole() {
 }
 
 
-scoreDisplay(board);
-timerDisplay(board);
+scoreDisplay(mainContainer);
+timerDisplay(mainContainer);
 startButton();
-drawBoard(board, 9);
+drawBoard(mainContainer, 9);
 
 const squares = document.querySelectorAll(".square");
 const mole = document.querySelector(".mole");
