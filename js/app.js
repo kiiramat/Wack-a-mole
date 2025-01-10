@@ -1,6 +1,7 @@
 const mainContainer = document.querySelector(".container");
 let time = 5;
 let myTimer = null;
+let moleTimer = null;
 
 function scoreDisplay(mainContainer) {
     const scoreDiv = document.createElement("div");
@@ -71,13 +72,19 @@ function randomSquare() {
 }
 
 function moveMole() {
-    let timerId = null;
-    timerId = setInterval(randomSquare, 500);
+    moleTimer = setInterval(randomSquare, 500);
 }
 
 function countDown() {
     time --;
     timeLeft.innerHTML = time;
+
+    if (time == 0) {
+        clearInterval(myTimer);
+        clearInterval(moleTimer);
+        timerDisplayArea.classList.add("hidden");
+        boardDisplayArea.classList.add("hidden");
+    } 
 }
 
 scoreDisplay(mainContainer);
@@ -89,6 +96,8 @@ const squares = document.querySelectorAll(".square");
 const mole = document.querySelector(".mole");
 const timeLeft = document.querySelector(".time-left");
 const score = document.querySelector(".score");
+const timerDisplayArea = document.querySelector(".timerDiv");
+const boardDisplayArea = document.querySelector(".gridDiv");
 
 let result = 0;
 let hitPosition
