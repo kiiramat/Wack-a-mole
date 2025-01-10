@@ -1,9 +1,9 @@
 const mainContainer = document.querySelector(".container");
 let time = 5;
-let myTimer = null;
+let timerCountDown = null;
 let moleTimer = null;
 
-function scoreDisplay(mainContainer) {
+function drawScore(mainContainer) {
     const scoreDiv = document.createElement("div");
     scoreDiv.setAttribute("class", "scoreDiv");
     const scoreLabel = document.createElement("h2");
@@ -17,7 +17,7 @@ function scoreDisplay(mainContainer) {
     scoreDiv.append(scoreValue);
 }
 
-function timerDisplay(mainContainer) {
+function drawTimer(mainContainer) {
     const timerDiv = document.createElement("div");
     timerDiv.setAttribute("class", "timerDiv");
     const timerLabel = document.createElement("h2");
@@ -31,15 +31,15 @@ function timerDisplay(mainContainer) {
     timerDiv.append(timerValue);
 }
 
-function startButton() {
+function drawStartButton() {
     const buttonDiv = document.createElement("div");
     buttonDiv.setAttribute("class", "buttonDiv");
     const button = document.createElement("button");
     button.innerHTML = "Start";
     button.addEventListener("click", () => {
         buttonDiv.classList.add("hidden");
-        moveMole();
-        myTimer = setInterval(countDown, 1000);
+        timerCountDown = setInterval(countDown, 1000);
+        moleTimer = setInterval(randomSquare, 500);
     });
 
     mainContainer.append(buttonDiv);
@@ -71,25 +71,21 @@ function randomSquare() {
     hitPosition = randomSquare.id;
 }
 
-function moveMole() {
-    moleTimer = setInterval(randomSquare, 500);
-}
-
 function countDown() {
     time --;
     timeLeft.innerHTML = time;
 
     if (time == 0) {
-        clearInterval(myTimer);
+        clearInterval(timerCountDown);
         clearInterval(moleTimer);
         timerDisplayArea.classList.add("hidden");
         boardDisplayArea.classList.add("hidden");
     } 
 }
 
-scoreDisplay(mainContainer);
-timerDisplay(mainContainer);
-startButton();
+drawScore(mainContainer);
+drawTimer(mainContainer);
+drawStartButton();
 drawBoard(mainContainer, 9);
 
 const squares = document.querySelectorAll(".square");
