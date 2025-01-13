@@ -60,6 +60,16 @@ function drawBoard(mainContainer, numDivs) {
     mainContainer.append(gridDiv);
 }
 
+function drawGameOver() {
+    const messageDiv = document.createElement("div");
+    messageDiv.setAttribute("class", "messageDiv");
+    const message = document.createElement("h2");
+    message.innerHTML = `Game Over! Your final score is ` + result;
+
+    mainContainer.append(messageDiv);
+    messageDiv.append(message);
+}
+
 function randomSquare() {
     squares.forEach(square => {
         square.classList.remove("mole");
@@ -78,8 +88,10 @@ function countDown() {
     if (time == 0) {
         clearInterval(timerCountDown);
         clearInterval(moleTimer);
+        scoreDisplayArea.classList.add("hidden");
         timerDisplayArea.classList.add("hidden");
         boardDisplayArea.classList.add("hidden");
+        drawGameOver();
     } 
 }
 
@@ -92,6 +104,7 @@ const squares = document.querySelectorAll(".square");
 const mole = document.querySelector(".mole");
 const timeLeft = document.querySelector(".time-left");
 const score = document.querySelector(".score");
+const scoreDisplayArea = document.querySelector(".scoreDiv");
 const timerDisplayArea = document.querySelector(".timerDiv");
 const boardDisplayArea = document.querySelector(".gridDiv");
 
