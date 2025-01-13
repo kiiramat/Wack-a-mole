@@ -1,6 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #b6b8b6;
+}
+
+.buttonDiv {
+    width: 170px;
+    margin: 70px auto 10px;
+}
+
+button {
+    font-size: 45px;
+    text-align: center;
+    color: #0f2069;
+    padding: 0px 32px;
+    background-color: #81a782;
+    border: 2px solid #050b28;
+    border-radius: 10px;
+    transition-duration: 0.1s;
+}
+
+button:hover {
+    box-shadow: 0px 0px 2px 2px #050b28;
+}
+
 .gridDiv {
     width: 606px;
     height: 606px;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
 }
@@ -12,9 +43,33 @@
 }
 
 .mole {
-    background-color: blue;
+    background-image: url("../images/mole.png");
+}
+
+.scoreDiv {
+    width: 140px;
+}
+
+.timerDiv {
+    width: 118px;
+}
+
+.scoreDiv,
+.timerDiv {
+    color: #050b28;
+    margin: auto;
+}
+
+.score,
+.time-left {
+    width: 27px;
+    margin: auto;
 }
 
 .hidden {
+    visibility: hidden;
+}
+
+.eraseDisplay {
     display: none;
 }

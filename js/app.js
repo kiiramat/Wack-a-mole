@@ -7,7 +7,7 @@ function drawScore(mainContainer) {
     const scoreDiv = document.createElement("div");
     scoreDiv.setAttribute("class", "scoreDiv");
     const scoreLabel = document.createElement("h2");
-    scoreLabel.innerHTML = "Your Score:";
+    scoreLabel.innerHTML = "Your Score";
     const scoreValue = document.createElement("h2");
     scoreValue.setAttribute("class", "score");
     scoreValue.innerHTML = 0;
@@ -21,7 +21,7 @@ function drawTimer(mainContainer) {
     const timerDiv = document.createElement("div");
     timerDiv.setAttribute("class", "timerDiv");
     const timerLabel = document.createElement("h2");
-    timerLabel.innerHTML = "Time left:";
+    timerLabel.innerHTML = "Time left";
     const timerValue = document.createElement("h2");
     timerValue.setAttribute("class", "time-left");
     timerValue.innerHTML = time;
@@ -35,6 +35,7 @@ function drawStartButton() {
     const buttonDiv = document.createElement("div");
     buttonDiv.setAttribute("class", "buttonDiv");
     const button = document.createElement("button");
+    button.setAttribute("class", "button");
     button.innerHTML = "Start";
     button.addEventListener("click", () => {
         buttonDiv.classList.add("hidden");
@@ -88,17 +89,17 @@ function countDown() {
     if (time == 0) {
         clearInterval(timerCountDown);
         clearInterval(moleTimer);
-        scoreDisplayArea.classList.add("hidden");
-        timerDisplayArea.classList.add("hidden");
-        boardDisplayArea.classList.add("hidden");
+        scoreDisplayArea.classList.add("eraseDisplay");
+        timerDisplayArea.classList.add("eraseDisplay");
+        boardDisplayArea.classList.add("eraseDisplay");
         drawGameOver();
     } 
 }
 
-drawScore(mainContainer);
-drawTimer(mainContainer);
 drawStartButton();
 drawBoard(mainContainer, 9);
+drawScore(mainContainer);
+drawTimer(mainContainer);
 
 const squares = document.querySelectorAll(".square");
 const mole = document.querySelector(".mole");
