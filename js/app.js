@@ -1,5 +1,5 @@
 const mainContainer = document.querySelector(".container");
-let time = 20;
+let time = 5;
 let timerCountDown = null;
 let moleTimer = null;
 
@@ -65,7 +65,7 @@ function drawGameOver() {
     const messageDiv = document.createElement("div");
     messageDiv.setAttribute("class", "messageDiv");
     const message = document.createElement("h2");
-    message.innerHTML = `Game Over! Your final score is ` + result;
+    message.innerHTML = `Game Over! <br /> Your final score is ` + result + `.`;
 
     mainContainer.append(messageDiv);
     messageDiv.append(message);
