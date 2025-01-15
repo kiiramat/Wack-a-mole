@@ -1,5 +1,5 @@
 const mainContainer = document.querySelector(".container");
-let time = 5;
+let time = 20;
 let timerCountDown = null;
 let moleTimer = null;
 
