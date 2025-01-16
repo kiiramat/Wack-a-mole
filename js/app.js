@@ -25,7 +25,7 @@ function drawTimer(mainContainer) {
     const timerValue = document.createElement("h2");
     timerValue.setAttribute("class", "time-left");
     timerValue.innerHTML = time;
-
+    
     mainContainer.append(timerDiv);
     timerDiv.append(timerLabel);
     timerDiv.append(timerValue);
@@ -57,18 +57,18 @@ function drawBoard(mainContainer, numDivs) {
         square.setAttribute("id", i);
         gridDiv.append(square);
     }
-
+    
     mainContainer.append(gridDiv);
 }
 
 function drawGameOver() {
-    const messageDiv = document.createElement("div");
-    messageDiv.setAttribute("class", "messageDiv");
+    gameOverDiv = document.createElement("div");
+    gameOverDiv.setAttribute("class", "gameOverDiv");
     const message = document.createElement("h2");
     message.innerHTML = `Game Over! <br /> Your final score is ` + result + `.`;
-
-    mainContainer.append(messageDiv);
-    messageDiv.append(message);
+    
+    mainContainer.append(gameOverDiv);
+    gameOverDiv.append(message);
 }
 
 function drawResetButton() {
@@ -77,7 +77,22 @@ function drawResetButton() {
     const button = document.createElement("button");
     button.setAttribute("class", "resetButton");
     button.innerHTML = "Reset";
-
+    button.addEventListener("click", () => {
+        gameOverDiv.classList.add("eraseDisplay");
+        buttonDiv.classList.add("eraseDisplay");
+        startButtonDisplayArea.classList.remove("hidden");
+        boardDisplayArea.classList.remove("eraseDisplay");
+        scoreDisplayArea.classList.remove("eraseDisplay");
+        timerDisplayArea.classList.remove("eraseDisplay");
+        squares.forEach(square => {
+            square.classList.remove("mole");
+        });
+        time = 5;
+        timeLeft.innerHTML = 5;
+        timerCountDown = null;
+        moleTimer = null;
+    })
+    
     mainContainer.append(buttonDiv);
     buttonDiv.append(button);
 }
@@ -86,27 +101,28 @@ function randomSquare() {
     squares.forEach(square => {
         square.classList.remove("mole");
     });
-
+    
     let randomSquare = squares[Math.floor(Math.random() * 9)];
     randomSquare.classList.add("mole");
-
+    
     hitPosition = randomSquare.id;
 }
 
 function countDown() {
     time --;
     timeLeft.innerHTML = time;
-
+    
     if (time == 0) {
         clearInterval(timerCountDown);
         clearInterval(moleTimer);
+        boardDisplayArea.classList.add("eraseDisplay");
         scoreDisplayArea.classList.add("eraseDisplay");
         timerDisplayArea.classList.add("eraseDisplay");
-        boardDisplayArea.classList.add("eraseDisplay");
         drawGameOver();
         drawResetButton();
     } 
 }
+
 
 drawStartButton();
 drawBoard(mainContainer, 9);
@@ -117,9 +133,12 @@ const squares = document.querySelectorAll(".square");
 const mole = document.querySelector(".mole");
 const timeLeft = document.querySelector(".time-left");
 const score = document.querySelector(".score");
+const boardDisplayArea = document.querySelector(".gridDiv");
 const scoreDisplayArea = document.querySelector(".scoreDiv");
 const timerDisplayArea = document.querySelector(".timerDiv");
-const boardDisplayArea = document.querySelector(".gridDiv");
+let gameOverDiv;
+const resetButtonDisplayArea = document.querySelector(".resetButtonDiv");
+const startButtonDisplayArea = document.querySelector(".startButtonDiv");
 
 let result = 0;
 let hitPosition
