@@ -8,12 +8,14 @@
     background-color: #b6b8b6;
 }
 
-.buttonDiv {
+.startButtonDiv,
+.resetButtonDiv {
     width: 170px;
     margin: 70px auto 10px;
 }
 
-button {
+.startButton,
+.resetButton {
     font-size: 45px;
     text-align: center;
     color: #0f2069;
@@ -24,7 +26,8 @@ button {
     transition-duration: 0.1s;
 }
 
-button:hover {
+.startButton:hover,
+.resetButton:hover {
     box-shadow: 0px 0px 2px 2px #050b28;
 }
 

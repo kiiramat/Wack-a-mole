@@ -33,9 +33,9 @@ function drawTimer(mainContainer) {
 
 function drawStartButton() {
     const buttonDiv = document.createElement("div");
-    buttonDiv.setAttribute("class", "buttonDiv");
+    buttonDiv.setAttribute("class", "startButtonDiv");
     const button = document.createElement("button");
-    button.setAttribute("class", "button");
+    button.setAttribute("class", "startButton");
     button.innerHTML = "Start";
     button.addEventListener("click", () => {
         buttonDiv.classList.add("hidden");
@@ -71,6 +71,17 @@ function drawGameOver() {
     messageDiv.append(message);
 }
 
+function drawResetButton() {
+    const buttonDiv = document.createElement("div");
+    buttonDiv.setAttribute("class", "resetButtonDiv");
+    const button = document.createElement("button");
+    button.setAttribute("class", "resetButton");
+    button.innerHTML = "Reset";
+
+    mainContainer.append(buttonDiv);
+    buttonDiv.append(button);
+}
+
 function randomSquare() {
     squares.forEach(square => {
         square.classList.remove("mole");
@@ -93,6 +104,7 @@ function countDown() {
         timerDisplayArea.classList.add("eraseDisplay");
         boardDisplayArea.classList.add("eraseDisplay");
         drawGameOver();
+        drawResetButton();
     } 
 }
 
