@@ -1,5 +1,5 @@
 const mainContainer = document.querySelector(".container");
-let time = 5;
+let time = 20;
 let timerCountDown = null;
 let moleTimer = null;
 
@@ -87,8 +87,8 @@ function drawResetButton() {
         squares.forEach(square => {
             square.classList.remove("mole");
         });
-        time = 5;
-        timeLeft.innerHTML = 5;
+        time = 20;
+        timeLeft.innerHTML = 20;
         timerCountDown = null;
         moleTimer = null;
     })
