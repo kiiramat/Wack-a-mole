@@ -3,6 +3,36 @@ let time = 20;
 let timerCountDown = null;
 let moleTimer = null;
 
+function drawStartButton() {
+    const buttonDiv = document.createElement("div");
+    buttonDiv.setAttribute("class", "startButtonDiv");
+    const button = document.createElement("button");
+    button.setAttribute("class", "startButton");
+    button.innerHTML = "Start";
+    button.addEventListener("click", () => {
+        buttonDiv.classList.add("hidden");
+        timerCountDown = setInterval(countDown, 1000);
+        moleTimer = setInterval(randomSquare, 500);
+    });
+    
+    mainContainer.append(buttonDiv);
+    buttonDiv.append(button);
+}
+
+function drawBoard(mainContainer, numDivs) {
+    const gridDiv = document.createElement("div");
+    gridDiv.setAttribute("class", "gridDiv");
+
+    for (let i = 0; i < numDivs; i ++) {
+        const square = document.createElement("div");
+        square.setAttribute("class", "square");
+        square.setAttribute("id", i);
+        gridDiv.append(square);
+    }
+    
+    mainContainer.append(gridDiv);
+}
+
 function drawScore(mainContainer) {
     const scoreDiv = document.createElement("div");
     scoreDiv.setAttribute("class", "scoreDiv");
@@ -11,7 +41,7 @@ function drawScore(mainContainer) {
     const scoreValue = document.createElement("h2");
     scoreValue.setAttribute("class", "score");
     scoreValue.innerHTML = 0;
-
+    
     mainContainer.append(scoreDiv);
     scoreDiv.append(scoreLabel);
     scoreDiv.append(scoreValue);
@@ -29,36 +59,6 @@ function drawTimer(mainContainer) {
     mainContainer.append(timerDiv);
     timerDiv.append(timerLabel);
     timerDiv.append(timerValue);
-}
-
-function drawStartButton() {
-    const buttonDiv = document.createElement("div");
-    buttonDiv.setAttribute("class", "startButtonDiv");
-    const button = document.createElement("button");
-    button.setAttribute("class", "startButton");
-    button.innerHTML = "Start";
-    button.addEventListener("click", () => {
-        buttonDiv.classList.add("hidden");
-        timerCountDown = setInterval(countDown, 1000);
-        moleTimer = setInterval(randomSquare, 500);
-    });
-
-    mainContainer.append(buttonDiv);
-    buttonDiv.append(button);
-}
-
-function drawBoard(mainContainer, numDivs) {
-    const gridDiv = document.createElement("div");
-    gridDiv.setAttribute("class", "gridDiv");
-
-    for (let i = 0; i < numDivs; i ++) {
-        const square = document.createElement("div");
-        square.setAttribute("class", "square");
-        square.setAttribute("id", i);
-        gridDiv.append(square);
-    }
-    
-    mainContainer.append(gridDiv);
 }
 
 function drawGameOver() {
@@ -87,6 +87,8 @@ function drawResetButton() {
         squares.forEach(square => {
             square.classList.remove("mole");
         });
+        score.innerHTML = 0;
+        result = 0;
         time = 20;
         timeLeft.innerHTML = 20;
         timerCountDown = null;
